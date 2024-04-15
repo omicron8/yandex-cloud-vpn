@@ -130,10 +130,10 @@ ip=$(yc compute instance create --name $INSTANCE_NAME \
     --ssh-key ~/.ssh/id_rsa.pub \
     --public-ip \
     --create-boot-disk "name=vpn-disk,auto-delete=true,size=8,image-folder-id=standard-images,image-family=ubuntu-2204-lts" \
-    --platform standard-v3 \
+    --platform standard-v2 \
     --memory 1 \
     --cores 2 \
-    --core-fraction 20 \
+    --core-fraction 5 \
     --preemptible \
     | grep -FA2 'one_to_one_nat:' | grep -F 'address:' | sed 's/[[:space:]]*address:[[:space:]]*//g')
 
