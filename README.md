@@ -18,9 +18,13 @@ script in this repo help you create such a virtual machine.
 5. Configure `yc` by calling `yc init`.
 6. [Install Wireguard](https://www.wireguard.com/install/) on the device where you want to use VPN.
 7. Ensure you have an SSH-key generated, with public key saved as `~/.ssh/id_rsa.pub`.
+   * If you prefer to use different public key, edit `do.sh` via hot replace `id_rsa` to `you_name_it` - double-check that there are three usages
 8. Download [do.sh](./do.sh) and run it, following the on-screen instructions. Keep the script running for now.
-9. Configure your WireGuard client using the config displayed by the script.
+9. Configure your WireGuard client using the config displayed by the script:
+   * Save generated configuration file to `/etc/wireguard/wg0.conf`
+   * Execute `sudo wg-quick up wg0` to setup tunnel
 10. When you're finished, press Enter in the terminal where you have the script running. It should remove the created virtual machine. Check that the server was removed from [Yandex Cloud](https://console.cloud.yandex.ru/).
+11. Execute `sudo wg-quick down wg0` to remove tunnel
 
 By default the command will generate a wireguard config for 1 client, using the
 subnet `192.168.55.0/24`. You can override the defaults by calling the script
