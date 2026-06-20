@@ -126,7 +126,7 @@ fi
 echo 'Booting up a new server...'
 
 ip=$(yc compute instance create --name $INSTANCE_NAME \
-    --zone ru-central1-e \
+    --zone ru-central1-d \
     --ssh-key ~/.ssh/id_ed25519.pub \
     --public-ip \
     --create-boot-disk "name=vpn-disk,auto-delete=true,size=8,image-folder-id=standard-images,image-family=ubuntu-2204-lts" \
